@@ -1,83 +1,74 @@
-import { useState } from "react";
 import "../styles/Contact.css";
 
 function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = () => {
-    if (!formData.name || !formData.email || !formData.message) {
-      alert("Please fill in all fields.");
-      return;
-    }
-    setSubmitted(true);
-  };
-
-  const handleReset = () => {
-    setFormData({ name: "", email: "", message: "" });
-    setSubmitted(false);
-  };
+  const contacts = [
+    {
+      icon: "✉️",
+      label: "Email",
+      value: "dhrubadummymail@gmail.com",
+      link: "mailto:dhrubadummmymail@gmail.com",
+    },
+    {
+      icon: "💼",
+      label: "LinkedIn",
+      value: "linkedin.com/in/dhrubajyoti.dummy",
+      link: "https://linkedin.com/in/dhruba.dummy",
+    },
+    {
+      icon: "🐙",
+      label: "GitHub",
+      value: "github.com/Dhruba.dummy",
+      link: "https://github.com/Dhruba.dummy",
+    },
+    {
+      icon: "📘",
+      label: "Facebook",
+      value: "facebook.com/dhruba.dummy",
+      link: "https://facebook.com/dhruba.dummy",
+    },
+    {
+      icon: "📸",
+      label: "Instagram",
+      value: "@dhruba.dummy",
+      link: "https://instagram.com/dhruba.dummy",
+    },
+    {
+      icon: "🌐",
+      label: "Portfolio",
+      value: "dhrubajyoti.vercel.app",
+      link: "https://dhrubajyoti.vercel.app",
+    },
+  ];
 
   return (
     <div className="contact-page">
       <div className="page-header">
-        <h1 className="page-title">Contact Me</h1>
-        <p className="page-subtitle">Have something to say? Send me a message!</p>
+        <h1 className="page-title">Get In Touch</h1>
+        <p className="page-subtitle">
+          Feel free to reach out — I'm always open to new opportunities and collaborations!
+        </p>
       </div>
 
-      <div className="contact-form-wrapper">
-        {submitted ? (
-          <div className="success-box">
-            <span className="success-icon">✅</span>
-            <h3>Message Sent!</h3>
-            <p>Thanks <strong>{formData.name}</strong>, I'll get back to you at <strong>{formData.email}</strong> soon.</p>
-            <button className="btn-primary" onClick={handleReset}>Send Another</button>
-          </div>
-        ) : (
-          <div className="contact-form">
-            <div className="form-group">
-              <label htmlFor="name">Your Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Full Name"
-                value={formData.name}
-                onChange={handleChange}
-              />
+      <div className="contact-grid">
+        {contacts.map((c, i) => (
+          <a
+            key={i}
+            href={c.link}
+            target="_blank"
+            rel="noreferrer"
+            className="contact-card"
+          >
+            <span className="contact-icon">{c.icon}</span>
+            <div className="contact-info">
+              <span className="contact-label">{c.label}</span>
+              <span className="contact-value">{c.value}</span>
             </div>
-            <div className="form-group">
-              <label htmlFor="email">Email Address</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="e.g. abc@email.com"
-                value={formData.email}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Write your message here..."
-                rows={5}
-                value={formData.message}
-                onChange={handleChange}
-              />
-            </div>
-            <button className="btn-primary send-btn" onClick={handleSubmit}>
-              Send Message →
-            </button>
-          </div>
-        )}
+            <span className="contact-arrow">→</span>
+          </a>
+        ))}
       </div>
+
+      
     </div>
   );
 }

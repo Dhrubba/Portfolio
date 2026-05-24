@@ -1,12 +1,15 @@
+import { useState } from "react";
 import "../styles/Home.css";
 
 function Home() {
+  const [count, setCount] = useState(0);
+
   return (
     <div className="home-page">
+
       <section className="hero-section">
         <div className="hero-avatar">
           <div className="avatar-circle">DB</div>
-          <div className="avatar-ring"></div>
         </div>
         <div className="hero-text">
           <p className="hero-greeting">Hello, I'm</p>
@@ -52,6 +55,23 @@ function Home() {
           <span className="highlight-icon">🌐</span>
           <h3>Freelance</h3>
           <p>Web dev, APIs, Responsive Frontends</p>
+        </div>
+      </section>
+
+      <section className="counter-section">
+        <h2 className="section-title">Profile Visit Counter</h2>
+        <div className="counter-card">
+          <p className="counter-label">You've clicked to say hi</p>
+          <div className="counter-display">{count}</div>
+          <p className="counter-sub">times!</p>
+          <div className="counter-buttons">
+            <button className="btn-primary" onClick={() => setCount(count + 1)}>
+              👋 Say Hi!
+            </button>
+            <button className="btn-secondary" onClick={() => setCount(0)}>
+              Reset
+            </button>
+          </div>
         </div>
       </section>
 
