@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "../styles/Weather.css";
 
-// Get your free API key from https://www.weatherapi.com/
-const API_KEY = "4d466a2ee17f4800b6450900262405";
+// Weather API
+const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
 function Weather() {
   // useState hooks to store data
