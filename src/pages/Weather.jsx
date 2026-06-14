@@ -62,7 +62,7 @@ function Weather() {
     <div className="weather-page">
 
       <div className="page-header">
-        <h1 className="page-title">Weather App</h1>
+        <h1 className="page-title">WEATHER APP</h1>
         <p className="page-subtitle">Check real-time weather for any city in the world</p>
       </div>
 
@@ -78,7 +78,7 @@ function Weather() {
             className="city-input"
           />
           <button onClick={fetchWeather} className="search-btn">
-            🔍 Search
+            Search
           </button>
         </div>
       </div>
